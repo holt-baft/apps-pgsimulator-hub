@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再访 · pg模拟器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            background-color: #f5f3f0;
+            color: #2c2b28;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 深色头图 —— 故事氛围 */
+        .hero {
+            background: linear-gradient(145deg, #1f1d1a 0%, #2b2722 100%);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 70%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(200, 160, 120, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 740px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(220, 200, 170, 0.12);
+            color: #c7b299;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(200, 180, 150, 0.15);
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 400;
+            color: #ede7df;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 span {
+            font-weight: 500;
+            background: linear-gradient(to right, #e3d5c0, #dac09a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: #b7ab9c;
+            font-size: 1.1rem;
+            max-width: 560px;
+            margin: 0 auto 0.5rem;
+            line-height: 1.7;
+        }
+
+        .hero .muted-sub {
+            font-size: 0.95rem;
+            color: #8e8274;
+            margin-top: 1rem;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem 4rem;
+            background: #faf8f5;
+            box-shadow: 0 -1px 0 rgba(0,0,0,0.03);
+        }
+
+        /* 承接段落 */
+        .intro-block {
+            margin-bottom: 3rem;
+        }
+
+        .intro-block p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: #3a3834;
+        }
+
+        .intro-block p:first-of-type::first-letter {
+            font-size: 2.2rem;
+            font-weight: 350;
+            color: #8b7a68;
+            float: left;
+            margin-right: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .intro-block .bookmark-note {
+            background: #f0ece7;
+            border-left: 4px solid #c1aa8e;
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: normal;
+            color: #3f3b35;
+        }
+
+        /* 特点卡片列表 */
+        .feature-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            border: 1px solid #e6e0d8;
+            border-radius: 16px;
+            padding: 1.8rem 1.5rem 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(60, 50, 40, 0.06);
+        }
+
+        .feature-item .icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            display: block;
+            color: #9b8a77;
+        }
+
+        .feature-item h3 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+            color: #383530;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #5e5951;
+            line-height: 1.6;
+        }
+
+        /* 温和结尾 & 链接强调色 */
+        .gentle-closing {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2dad1;
+        }
+
+        .gentle-closing p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #3d3a34;
+        }
+
+        a {
+            color: #9f7d5c;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 450;
+        }
+
+        a:hover {
+            color: #7e6042;
+            border-bottom-color: #c9b097;
+        }
+
+        .gentle-closing a {
+            border-bottom: 1px dotted #cfbbaa;
+        }
+
+        .gentle-closing a:hover {
+            border-bottom-style: solid;
+        }
+
+        /* 小提示/FAQ摘要 */
+        .faq-mini {
+            margin: 2.2rem 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 2rem;
+            background: #f3efe9;
+            padding: 1.5rem 1.8rem;
+            border-radius: 20px;
+        }
+
+        .faq-mini details {
+            flex: 1 1 200px;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            color: #4d453e;
+            cursor: pointer;
+            margin-bottom: 0.3rem;
+            font-size: 0.98rem;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            color: #b19a82;
+        }
+
+        .faq-mini details p {
+            font-size: 0.92rem;
+            color: #605a51;
+            margin-top: 0.3rem;
+            line-height: 1.6;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3rem 1.2rem 2.5rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .content {
+                padding: 2.2rem 1.2rem 3rem;
+            }
+            .feature-list {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .feature-item {
+                padding: 1.3rem;
+            }
+            .faq-mini {
+                flex-direction: column;
+                padding: 1.2rem;
+            }
+            .intro-block p:first-of-type::first-letter {
+                font-size: 1.9rem;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 900px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .feature-list {
+                gap: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图：再次访问的邀请 -->
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-tag">· 回来了 ·</span>
+        <h1>有些页面，值得<span>再次打开</span></h1>
+        <p>收藏夹里总有一两个角落，存放着顺手保存的链接。<br>而这里，是你上次离开后，悄悄更新了一点的那个地方。</p>
+        <div class="muted-sub">—— 书签栏里的小站点，有时比想象中更经用</div>
+    </div>
+</section>
+
+<!-- 浅色正文区：故事叙述式承接 -->
+<main class="content">
+
+    <div class="intro-block">
+        <p>
+            上一次打开这个页面，可能是几周前，也可能是几个月前。你随手点了收藏，想着「有空再仔细看看」——然后那个标签页就在浏览器深处安静地待着，直到今天。
+        </p>
+        <p>
+            其实很多工具类页面都是这样：不需要频繁造访，但当某个下午你突然想起它，它还在那里，界面没变花哨，功能也没缩水。它不像那些一打开就催你注册的应用，而更像一个安静的书架格——你放了一本工具书在上头，想查的时候伸手就能拿到。
+        </p>
+        <div class="bookmark-note">
+            📎 这次回来，不妨把链接放进一个醒目的书签文件夹里。顺手的事，但下次需要时能省下翻历史记录的工夫。
+        </div>
+        <p>
+            作为一个模拟器类工具站，<a href="https://apps-pgsimulator.com">pg模拟器</a> 在它专注的领域里一直保持着自己稳定的节奏。没有弹窗广告，没有多余的通知，就是一套你可以随时调用的功能组合。如果你之前只是匆匆一瞥，这次或许可以多停留几分钟，看看它最近有哪些调整。
+        </p>
+    </div>
+
+    <!-- 特点列表：小而实在 -->
+    <h2 style="font-weight: 400; font-size: 1.35rem; color: #3b3731; letter-spacing: 0.5px; margin-bottom: 0.3rem;">· 为什么值得留在收藏夹里</h2>
+    <p style="color: #706b62; margin-bottom: 1.5rem; font-size: 0.95rem;">几个让人愿意再打开的理由，朴实但管用。</p>
+
+    <div class="feature-list">
+        <div class="feature-item">
+            <span class="icon">◻️</span>
+            <h3>界面轻，不晃眼</h3>
+            <p>没有满屏的动效和弹窗，信息层级清晰。打开就能用，用完关掉也不觉得累赘。</p>
+        </div>
+        <div class="feature-item">
+            <span class="icon">◽</span>
+            <h3>功能直给，不绕路</h3>
+            <p>每个模块对应一个具体操作，不需要在设置里翻来翻去。模拟器嘛，顺手比花哨重要。</p>
+        </div>
+        <div class="feature-item">
+            <span class="icon">⬜</span>
+            <h3>更新低调但实在</h3>
+            <p>没有更新日志刷屏，但隔一阵子再看，会发现细节确实在打磨。像一个默默改稿的人。</p>
+        </div>
+        <div class="feature-item">
+            <span class="icon">▫️</span>
+            <h3>适合反复使用</h3>
+            <p>不管是日常测试还是偶尔需要，核心功能一直在线。收藏一次，管用很久。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要：温和解答常见小疑问 -->
+    <div class="faq-mini">
+        <details>
+            <summary>这个站点需要注册吗？</summary>
+            <p>不需要。打开页面后大部分功能可直接使用，没有强制登录或绑定账号的环节。</p>
+        </details>
+        <details>
+            <summary>会不会突然打不开或变收费？</summary>
+            <p>目前没有看到此类调整。工具类站点通常以稳定为主，如果将来有变化，站点内一般会提前说明。</p>
+        </details>
+        <details open>
+            <summary>我上次用过的设置会保留吗？</summary>
+            <p>部分偏好设置会保存在本地浏览器中。清理缓存或更换设备后可能需要重新调整，不算麻烦。</p>
+        </details>
+    </div>
+
+    <!-- 温和结尾 + 自然链接 -->
+    <div class="gentle-closing">
+        <p>
+            如果你今天正好有点空闲，或者手头刚好需要一个模拟环境，不妨再次打开书签里的 <a href="https://apps-pgsimulator.com">pg模拟器</a>。它还是那个样子——不打扰，但管用。
+        </p>
+        <p style="color: #6b655c;">
+            收藏夹里那么多链接，真正会回去看的其实没几个。但偶尔有那么一个，每次打开都觉得「嗯，留着是对的」。希望这里也是。
+        </p>
+        <p style="font-size: 0.95rem; color: #8c847a; margin-top: 2rem;">
+            —— 下次再想起它的时候，它还在老地方等你。
+        </p>
+    </div>
+
+</main>
+
+</body>
+</html>
