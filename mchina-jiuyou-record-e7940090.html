@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九游娱乐 · 再次光临</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fafaf8;
+      color: #232526;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      padding: 2.5rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .page {
+      max-width: 700px;
+      width: 100%;
+    }
+    /* 开场短句 — 起 */
+    .hero-greeting {
+      margin-top: 3rem;
+      margin-bottom: 1.8rem;
+    }
+    .hero-greeting p {
+      font-size: 2rem;
+      font-weight: 380;
+      letter-spacing: -0.02em;
+      color: #1f1f1e;
+      border-left: 4px solid #b7b2a0;
+      padding-left: 1.25rem;
+    }
+    .hero-greeting .sub {
+      font-size: 1rem;
+      color: #6b6b64;
+      margin-top: 0.6rem;
+      padding-left: 1.25rem;
+      font-weight: 360;
+    }
+    /* 承接段落 */
+    .intro-block {
+      margin: 2rem 0 2.5rem 0;
+    }
+    .intro-block p {
+      font-size: 1.05rem;
+      margin-bottom: 1.3rem;
+      color: #2c2d2a;
+    }
+    .intro-block a {
+      color: #1f3a3f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #c0b9a8;
+      font-weight: 450;
+      transition: text-decoration-color 0.2s, color 0.2s;
+    }
+    .intro-block a:hover {
+      color: #0c282e;
+      text-decoration-color: #7f7a6e;
+    }
+    /* 特点列表 — 叙事式 */
+    .features {
+      margin: 2.8rem 0 2.8rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+    .feature-item {
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      border-left: 1px solid #dad7ce;
+    }
+    .feature-item h3 {
+      font-size: 1.2rem;
+      font-weight: 450;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.4rem;
+      color: #2b2b28;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .feature-item h3::before {
+      content: "—";
+      color: #a09b8e;
+      font-weight: 300;
+      font-size: 1rem;
+      margin-right: 0.2rem;
+    }
+    .feature-item p {
+      font-size: 0.96rem;
+      color: #474742;
+      max-width: 90%;
+    }
+    /* 温和收尾 */
+    .closing-note {
+      margin: 3rem 0 2.8rem 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e6e2d9;
+    }
+    .closing-note p {
+      font-size: 1rem;
+      color: #3c3d39;
+      margin-bottom: 0.8rem;
+    }
+    .closing-note .remark {
+      font-size: 0.92rem;
+      color: #6b6a62;
+      line-height: 1.6;
+      margin-top: 1.2rem;
+      padding: 1.2rem 1.4rem;
+      background: #f0efe9;
+      border-radius: 2px;
+    }
+    .closing-note .remark span {
+      display: block;
+      margin-top: 0.3rem;
+      font-style: normal;
+    }
+    .faq-mini {
+      margin: 3rem 0 1.5rem 0;
+    }
+    .faq-mini summary {
+      font-weight: 430;
+      color: #3b3b36;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      font-size: 1rem;
+      border-bottom: 1px dashed #d6d1c5;
+      list-style: none;
+    }
+    .faq-mini summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-mini summary::marker {
+      display: none;
+      content: "";
+    }
+    .faq-mini summary:before {
+      content: "▹ ";
+      color: #807b6e;
+      font-size: 1rem;
+    }
+    .faq-mini p {
+      margin: 0.8rem 0 1.2rem 0.8rem;
+      font-size: 0.95rem;
+      color: #484942;
+      border-left: 2px solid #d2cdc0;
+      padding-left: 1rem;
+    }
+    footer {
+      font-size: 0.85rem;
+      color: #8c8a80;
+      margin: 2.5rem 0 1rem;
+      text-align: center;
+      border-top: 1px solid #e3dfd6;
+      padding-top: 2rem;
+      width: 100%;
+    }
+    footer a {
+      color: #4d4c44;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: #c2bcaf;
+    }
+    footer a:hover {
+      color: #23241f;
+    }
+    @media (max-width: 500px) {
+      body { padding: 1.2rem 1rem; }
+      .hero-greeting p { font-size: 1.6rem; padding-left: 0.9rem; }
+      .feature-item p { max-width: 100%; }
+      .intro-block p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 开场短句：再次回来的理由 -->
+  <div class="hero-greeting">
+    <p>再次打开这个页面。<br>你记得这个地方。</p>
+    <div class="sub">—— 有些站点值得你存下书签，甚至反复回来。</div>
+  </div>
+
+  <!-- 承接段落：从收藏到持续关注 -->
+  <div class="intro-block">
+    <p>
+      收藏夹里的链接会慢慢变旧，但有些地址却总让人想点开看看。这次更新页面，就是因为发现很多朋友把 <a href="https://mchina-jiuyou.com">九游娱乐</a> 放在了浏览器的书签栏，隔几周就会回来扫一眼。没有花哨的弹窗，没有催促你注册的横幅，就是安安静静地提供一些你可能会感兴趣的资讯和内容。
+    </p>
+    <p>
+      平台的风格一直很克制：首页没有铺满五颜六色的入口，而是用清晰的分类让你自己决定接下来看什么。这种「让你自己逛」的态度，反而让人愿意多停留一会儿。
+    </p>
+  </div>
+
+  <!-- 特点列表：用三个可记忆的点 -->
+  <div class="features">
+    <div class="feature-item">
+      <h3>保持距离感的内容排列</h3>
+      <p>每一个栏目之间的留白都很充分。没有信息轰炸，也没有“猜你喜欢”的弹窗追赶你的鼠标。对于只是想来放松一下的人来说，这种呼吸感非常友好。</p>
+    </div>
+    <div class="feature-item">
+      <h3>更新频率不高，但每次都有变化</h3>
+      <p>不需要每天刷新。隔一两周回来，会发现首页悄悄换了推荐模块，或者多了两个之前没见过的小版块。这种「低频但走心」的更新节奏，很像一本不定期出刊的杂志。</p>
+    </div>
+    <div class="feature-item">
+      <h3>不刻意引导注册或下载</h3>
+      <p>整个站点的逻辑是：你来了，你看，你走。如果你想成为常客，右上角有个很不起眼的登录入口；如果你只是路过，也完全不影响浏览。这种尊重陌生人体验的设计，现在真的不多见。</p>
+    </div>
+  </div>
+
+  <!-- 温和的结尾 + FAQ 摘要 -->
+  <div class="closing-note">
+    <p>所以这一次，我把它重新整理成了一个更安静的介绍页。没有冗长的功能介绍，也没有密密麻麻的截图。</p>
+    <p>只是想说：如果你之前来过，欢迎再回来看看；如果这是第一次听说 <a href="https://mchina-jiuyou.com">九游娱乐</a>，不妨先把它放进书签，过几天再点开——它不会让你失望，也不会吵到你。</p>
+    
+    <div class="remark">
+      “一个网站最好的状态，不是让你立刻记住它，而是让你愿意下次再来。”
+      <span>—— 来自某位常客的留言</span>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要：保持话题开放 -->
+  <div class="faq-mini">
+    <details>
+      <summary>为什么页面内容和上次不一样了？</summary>
+      <p>每次更新都会围绕同一个站点换一个叙述角度。这次侧重的是“持续关注”和“回头客”的体验，所以笔调更平实，更像是一篇整理后的笔记。同一个地址，每次来看到的介绍都可能不同。</p>
+    </details>
+    <details>
+      <summary>这个网站适合什么样的人？</summary>
+      <p>适合不想被算法推着走、喜欢自己慢慢浏览的人。没有注册压力，没有强制关注，所有内容都摆在那里，你看或不看，它都在。</p>
+    </details>
+  </div>
+
+  <!-- 页脚：再次自然出现链接 -->
+  <footer>
+    <p>如果你打算收藏这个站点，直接记住 <a href="https://mchina-jiuyou.com">九游娱乐</a> 就好。没有第二地址，没有镜像站。</p>
+  </footer>
+
+</div>
+</body>
+</html>
